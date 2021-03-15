@@ -1,3 +1,5 @@
+"use strict";
+
 $(document).ready(function(){
     $('[data-fancybox="gallery"]').fancybox({});
 
@@ -249,8 +251,11 @@ $(document).ready(function () {
 
 $(document).ready(function(){
     $(".modal").on('hidden.bs.modal', function (e) {
-        jQuery("iframe").each(function() {
-            jQuery(this)[0].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*')
+        // jQuery("iframe").each(function() {
+        //     jQuery(this)[0].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*')
+        // });
+        $('iframe').contents().find('video').each(function () {
+            this.pause();
         });
     });
 
